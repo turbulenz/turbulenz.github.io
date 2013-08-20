@@ -50,8 +50,12 @@
       function addRepo(repo) {
         var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<h3>").text(repo.language));
+        if (repo.fork) {
+          $link.append($('<h2 class="fork">').text(repo.name));
+        } else {
+          $link.append($("<h2>").text(repo.name));
+        }
+        $link.append($("<h3>").text((repo.language || "") + " (" + repo.watchers + " stargazers)"));
         $link.append($("<p>").text(repoDescription(repo)));
         $item.appendTo("#repos");
       }
@@ -134,8 +138,12 @@
         <p>SDK - <a href="https://github.com/turbulenz/turbulenz_engine">turbulenz_engine</a></p>
         <p>Games - <a href="http://turbulenz.com">turbulenz.com</a></p>
         <p>News - <a href="http://news.turbulenz.com/">news.turbulenz.com</a></p>
-        <p><a href="https://groups.google.com/group/turbulenz-engine-users">Get help</a></p>
+        <p>Forum - <a href="https://groups.google.com/group/turbulenz-engine-users">turbulenz-engine-users</a></p>
         <p><a href="http://biz.turbulenz.com/contact">Get in touch</a></p>
+        <p id="follow">
+            <a href="https://twitter.com/turbulenz" class="twitter-follow-button" data-show-count="false">Follow @turbulenz</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
       </div>
 
       <div class="grid grid-3">
