@@ -55,7 +55,7 @@
         } else {
           $link.append($("<h2>").text(repo.name));
         }
-        $link.append($("<h3>").text((repo.language || "") + " (" + repo.watchers + " stargazers)"));
+        $link.append($("<h3>").text((repo.language || "") + " - " + repo.watchers + " stargazers"));
         $link.append($("<p>").text(repoDescription(repo)));
         $item.appendTo("#repos");
       }
